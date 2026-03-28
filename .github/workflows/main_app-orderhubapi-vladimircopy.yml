@@ -57,13 +57,13 @@ jobs:
         uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_2067CC468A3F4CA69B9D76BF865F8408 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_A5F04F9B8F764785BAB8A1BA94AA507E }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_C341932C8A8D489F8E98AEEBC945F330 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_C341932C8A8D489F8E98AEEBC945F330 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_A5F04F9B8F764785BAB8A1BA94AA507E }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'app-orderhubapi-vladimir200120'
+          app-name: 'app-orderhubapi-vladimircopy'
           slot-name: 'Production'
           package: .
