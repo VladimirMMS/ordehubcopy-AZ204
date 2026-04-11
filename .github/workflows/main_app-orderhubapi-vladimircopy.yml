@@ -17,8 +17,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
-
-      # 👇 IMPORTANTE: apuntar al backend
       - name: Install dependencies
         working-directory: src/api
         run: npm install
@@ -27,7 +25,6 @@ jobs:
         working-directory: src/api
         run: npm run build
 
-      # 👇 SOLO subimos el backend, no todo el repo
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
