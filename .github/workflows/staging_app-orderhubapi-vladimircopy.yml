@@ -1,6 +1,9 @@
 name: Deploy Node.js app to Azure Web App Staging - app-orderhubapi-vladimircopy
 
 on:
+  push:
+    branches:
+      - staging
   workflow_dispatch:
 
 jobs:
