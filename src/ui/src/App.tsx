@@ -6,6 +6,7 @@ type Order = {
   customerId: string;
   total: number;
   status: string;
+  address?: string;
 };
 function App() {
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
