@@ -4,13 +4,13 @@ import { OrdersService } from './orders.service';
 export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
   @Get()
-  getOrders() {
-    return this.ordersService.findAll();
+  async getOrders() {
+    return await this.ordersService.findAll();
   }
   @Post()
-  createOrder(
+  async createOrder(
     @Body() body: { customerId: string; total: number; status: string },
   ) {
-    return this.ordersService.create(body);
+    return await this.ordersService.create(body);
   }
 }

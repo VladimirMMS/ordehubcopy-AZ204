@@ -1,27 +1,23 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Order } from './entities/order.entity';
+import { Repository } from 'typeorm';
 
-export interface Order {
-  id: string;
-  customerId: string;
-  total: number;
-  status: string;
-}
 @Injectable()
 export class OrdersService {
-  private readonly orders: Order[] = [
-    { id: '1', customerId: 'cust-001', total: 150, status: 'Pending' },
-    { id: '2', customerId: 'cust-002', total: 220, status: 'Completed' },
-    { id: '3', customerId: 'cust-002', total: 220, status: 'Completed' },
-  ];
-  findAll(): Order[] {
-    return this.orders;
+  constructor(
+    @InjectRepository(Order)
+    private readonly orderRepository: Repository<Order>,
+  ) {}
+  async findAll(): Promise<Order[]> {
+    const orders = await this.orderRepository.find();
+    return orders;
   }
-  create(order: Omit<Order, 'id'>): Order {
+
+  async create(order: Omit<Order, 'id'>): Promise<Order> {
     const newOrder: Order = {
-      id: Date.now().toString(),
       ...order,
     };
-    this.orders.push(newOrder);
-    return newOrder;
+    return await this.orderRepository.save(newOrder);
   }
 }
