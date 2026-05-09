@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import type { CSSProperties } from 'react';
 import { useEffect, useState } from 'react';
 import CreateOrderForm from '../components/CreateOrderForm';
 
@@ -130,14 +131,14 @@ export default function OrdersPage({ apiBaseUrl, token, user }: { apiBaseUrl: st
   );
 }
 
-const thStyle = {
+const thStyle: CSSProperties = {
   textAlign: 'left',
   borderBottom: '1px solid #ddd',
   padding: '0.75rem',
   backgroundColor: '#f9fafb',
 };
 
-const tdStyle = {
+const tdStyle: CSSProperties = {
   borderBottom: '1px solid #eee',
   padding: '0.75rem',
 };
